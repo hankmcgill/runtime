@@ -3,4 +3,4 @@ version: 0.2
 phases:
   build:
     commands:
-      - git archive -v -o runtime.zip --format=zip HEAD
+      - zip runtime.zip webapp
