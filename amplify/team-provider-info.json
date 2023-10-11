@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-runtime-dev-205516-authRole",
+      "UnauthRoleArn": "arn:aws:iam::506029946825:role/amplify-runtime-dev-205516-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::506029946825:role/amplify-runtime-dev-205516-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-runtime-dev-205516-deployment",
+      "UnauthRoleName": "amplify-runtime-dev-205516-unauthRole",
+      "StackName": "amplify-runtime-dev-205516",
+      "StackId": "arn:aws:cloudformation:us-east-1:506029946825:stack/amplify-runtime-dev-205516/d8772710-67d0-11ee-880f-12eb3ccc5699",
+      "AmplifyAppId": "d292e63m7vorap"
+    },
+    "categories": {
+      "auth": {
+        "runtime29463fcc": {
+          "userPoolId": "us-east-1_eE7Nsg9CZ",
+          "userPoolName": "runtime-refactor",
+          "webClientId": "1v1vbnvribru49b9pskcicgdlu",
+          "nativeClientId": "1v1vbnvribru49b9pskcicgdlu"
+        }
+      }
+    }
+  }
+}
