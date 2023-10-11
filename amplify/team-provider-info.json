@@ -13,12 +13,7 @@
     },
     "categories": {
       "auth": {
-        "runtime29463fcc": {
-          "userPoolId": "us-east-1_eE7Nsg9CZ",
-          "userPoolName": "runtime-refactor",
-          "webClientId": "1v1vbnvribru49b9pskcicgdlu",
-          "nativeClientId": "1v1vbnvribru49b9pskcicgdlu"
-        }
+        "runtimecd5f5a9c": {}
       }
     }
   }
