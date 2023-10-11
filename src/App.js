@@ -4,16 +4,15 @@ import Profile from "./components/Profile";
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
-function App() {
+export default function App() {
   return (
-      <Authenticator>
-          {({ signOut, user }) => (
-              <div>
-                  <p>Welcome {user.username}</p>
-                  <button onClick={signOut}>Sign out</button>
-              </div>
-          )}
-      </Authenticator>
+    <Authenticator loginMechanisms={['username','email']}>
+      {({ signOut, user }) => (
+        <main>
+          <h1>Hello {user.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </main>
+      )}
+    </Authenticator>
   );
 }
-export default App;
