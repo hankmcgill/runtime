@@ -4,7 +4,14 @@ import Profile from "./components/Profile";
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
+import { Amplify, Auth } from 'aws-amplify';
+import awsExports from './aws-exports';
+
 export default function App() {
+
+  // Configure Amplify in index file or root file
+Amplify.configure(awsExports)
+
   return (
     <Authenticator loginMechanisms={['username','email']}>
       {({ signOut, user }) => (

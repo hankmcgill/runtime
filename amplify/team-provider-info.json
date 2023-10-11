@@ -16,5 +16,23 @@
         "runtimecd5f5a9c": {}
       }
     }
+  },
+  "runenv": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-runtime-runenv-215930-authRole",
+      "UnauthRoleArn": "arn:aws:iam::506029946825:role/amplify-runtime-runenv-215930-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::506029946825:role/amplify-runtime-runenv-215930-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-runtime-runenv-215930-deployment",
+      "UnauthRoleName": "amplify-runtime-runenv-215930-unauthRole",
+      "StackName": "amplify-runtime-runenv-215930",
+      "StackId": "arn:aws:cloudformation:us-east-1:506029946825:stack/amplify-runtime-runenv-215930/d1ea2010-67d9-11ee-90e2-12f4c77a5bf9",
+      "AmplifyAppId": "d2ciuwc5rldyev"
+    },
+    "categories": {
+      "auth": {
+        "runtimecd5f5a9c": {}
+      }
+    }
   }
 }
