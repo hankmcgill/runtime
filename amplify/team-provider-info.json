@@ -32,6 +32,12 @@
     "categories": {
       "auth": {
         "runtimecd5f5a9c": {}
+      },
+      "function": {
+        "testLambda": {
+          "deploymentBucketName": "amplify-runtime-runenv-215930-deployment",
+          "s3Key": "amplify-builds/testLambda-7543346c587952783234-build.zip"
+        }
       }
     }
   }
