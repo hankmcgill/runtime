@@ -37,6 +37,10 @@
         "testLambda": {
           "deploymentBucketName": "amplify-runtime-runenv-215930-deployment",
           "s3Key": "amplify-builds/testLambda-7543346c587952783234-build.zip"
+        },
+        "greetingfunction": {
+          "deploymentBucketName": "amplify-runtime-runenv-215930-deployment",
+          "s3Key": "amplify-builds/greetingfunction-65316b4c686c76666758-build.zip"
         }
       }
     }
