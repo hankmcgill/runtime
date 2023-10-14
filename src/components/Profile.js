@@ -4,7 +4,7 @@ import { getTest } from '../api/Api';
 
 export default function Profile ({user}) {
 
-  console.log('user', user.pool.clientId)
+  // console.log('user', user.pool.clientId)
 
   useEffect(() => {
     getTest(user.pool.clientId)
