@@ -11,7 +11,7 @@ export async function getTest () {
             },
             "AttributeUpdates": {
                 "number": {
-                    "Value": 66
+                    "Value": 99
                 }
             }
         }
