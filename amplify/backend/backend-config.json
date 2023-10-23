@@ -1,6 +1,6 @@
 {
   "api": {
-    "amplifyAPI": {
+    "expressApi": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,21 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "testLambda"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
-    "apia2c61ac3": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "greetingfunction"
+          "resourceName": "runExpress"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -56,7 +42,31 @@
     }
   },
   "function": {
+    "getDynamoItems": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "runnerdata"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "greetingfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "runExpress": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -99,6 +109,12 @@
           "resourceName": "testLambda"
         }
       ]
+    }
+  },
+  "storage": {
+    "runnerdata": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

@@ -1,11 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "amplifyAPI": {
-      "ApiId": "string",
-      "ApiName": "string",
-      "RootUrl": "string"
-    },
-    "apia2c61ac3": {
+    "expressApi": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -23,7 +18,21 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "getDynamoItems": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "greetingfunction": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "runExpress": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -36,6 +45,16 @@ export type AmplifyDependentResourcesAttributes = {
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
+    }
+  },
+  "storage": {
+    "runnerdata": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "StreamArn": "string"
     }
   }
 }

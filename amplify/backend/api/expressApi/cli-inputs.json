@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/hello": {
-      "name": "/hello",
-      "lambdaFunction": "greetingfunction",
+    "/server": {
+      "name": "/server",
+      "lambdaFunction": "runExpress",
       "permissions": {
         "setting": "open"
       }
