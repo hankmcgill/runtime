@@ -4,7 +4,7 @@ export default function Header ({signOut}) {
   return (
     <header>
       <nav>
-      runtime
+      runtime is a fine app indeed!
       <button onClick={signOut}>Sign out</button>
       </nav>
   </header>
