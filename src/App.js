@@ -6,7 +6,7 @@ export default function App() {
   return (
     <body>
       <Header />
-      oh, hello!
+      oh, hello from my new mac!
       <Profile />
       <Footer />
     </body>
