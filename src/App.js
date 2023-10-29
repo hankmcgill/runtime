@@ -6,7 +6,7 @@ export default function App() {
   return (
     <body>
       <Header />
-      Oh, hello from my new mac!!! this is the final test push.
+      Oh, hello from my new mac! this is the final test push.
       <Profile />
       <Footer />
     </body>
