@@ -25,7 +25,8 @@
     "serve": "react-scripts build && nodemon server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "docker build -t runtime . && docker tag runtime hankmcgill/runtime && docker tag runtime:latest public.ecr.aws/v8w6v4z1/runtime-app:latest && docker push hankmcgill/runtime && docker push public.ecr.aws/v8w6v4z1/runtime-app:latest"
   },
   "eslintConfig": {
     "extends": [
