@@ -1,11 +1,7 @@
-export default function Profile () {
-
+export default function Profile() {
   return (
     <main>
-    <h1>Hello</h1>
-
-    <button>click me</button>
-
+      <h1>Hello</h1>
     </main>
   )
 }
