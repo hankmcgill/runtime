@@ -6,7 +6,7 @@ export default function App() {
   return (
     <body>
       <Header />
-      Did I successfully push a new docker image? Here's hoping...
+      Final test of CI/CD pipeline
       <Profile />
       <Footer />
     </body>

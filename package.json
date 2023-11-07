@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "docker buildx build --platform linux/amd64 -t 506029946825.dkr.ecr.us-east-1.amazonaws.com/runtime-repository:latest . --push"
+    "deploy": "react-scripts build && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 506029946825.dkr.ecr.us-east-1.amazonaws.com && docker buildx build --platform linux/amd64 -t 506029946825.dkr.ecr.us-east-1.amazonaws.com/runtime-repository:latest . --push"
   },
   "eslintConfig": {
     "extends": [
