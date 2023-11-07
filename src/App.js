@@ -6,7 +6,7 @@ export default function App() {
   return (
     <body>
       <Header />
-      Oh, hello from my new mac! this is the final test push! yay!
+      Did I successfully push a new docker image? Here's hoping...
       <Profile />
       <Footer />
     </body>

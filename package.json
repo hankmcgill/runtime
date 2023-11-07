@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "docker build -t runtime . && docker tag runtime hankmcgill/runtime && docker tag runtime:latest public.ecr.aws/v8w6v4z1/runtime-app:latest && docker push hankmcgill/runtime && docker push public.ecr.aws/v8w6v4z1/runtime-app:latest"
+    "deploy": "docker buildx build --platform linux/amd64 -t 506029946825.dkr.ecr.us-east-1.amazonaws.com/runtime-repository:latest . --push"
   },
   "eslintConfig": {
     "extends": [
