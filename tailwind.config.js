@@ -3,6 +3,7 @@ module.exports = {
   content: ['src/**'],
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ['corporate']
+    // themes: ['corporate']
+    themes: ['light', 'dark']
   }
 }

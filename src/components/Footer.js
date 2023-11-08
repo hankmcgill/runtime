@@ -1,9 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-export default function Header () {
-  return (
-    <footer>
-      c Hank
-    </footer>
-  )
+export default function Header() {
+  return <footer>{/* c Hank */}</footer>
 }

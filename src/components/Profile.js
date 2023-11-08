@@ -2,9 +2,5 @@
 // ;(await Auth.currentSession()).getIdToken().getJwtToken()
 
 export default function Profile(props) {
-  return (
-    <main>
-      <h1>Hello {props.user.username}</h1>
-    </main>
-  )
+  return <main>{/* <h1>Hello {props.user.username}</h1> */}</main>
 }

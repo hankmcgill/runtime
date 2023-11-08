@@ -18,7 +18,7 @@ Amplify.configure({
 export function App({ signOut, user }) {
   return (
     <main>
-      <Header signOut={signOut} />
+      <Header user={user} signOut={signOut} />
       <Profile user={user} />
       <Footer />
     </main>
