@@ -6,7 +6,7 @@ export default function App() {
   return (
     <body>
       <Header />
-      Final test of CI/CD pipeline
+      Final test of CI/CD pipeline!
       <Profile />
       <Footer />
     </body>
