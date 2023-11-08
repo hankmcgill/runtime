@@ -1,0 +1,28 @@
+:root {
+  --amplify-colors-brand-primary-10: theme('colors.base-300');
+  --amplify-colors-brand-primary-20: theme('colors.base-100');
+  --amplify-colors-brand-primary-40: theme('colors.base-300');
+  --amplify-colors-brand-primary-80: theme('colors.base-content');
+  --amplify-colors-brand-primary-90: theme('colors.primary');
+  --amplify-colors-brand-primary-100: theme('colors.primary');
+  --amplify-colors-brand-secondary-10: theme('colors.primary');
+  --amplify-colors-brand-secondary-20: theme('colors.primary');
+  --amplify-colors-brand-secondary-40: theme('colors.primary');
+  --amplify-colors-brand-secondary-60: theme('colors.primary');
+  --amplify-colors-brand-secondary-80: theme('colors.primary');
+  --amplify-colors-brand-secondary-90: theme('colors.primary');
+  --amplify-colors-brand-secondary-100: theme('colors.primary');
+  --amplify-colors-border-primary: theme('colors.base-300');
+  --amplify-colors-border-secondary: theme('colors.base-300');
+  --amplify-colors-border-tertiary: theme('colors.base-300');
+  --amplify-colors-background-secondary: theme('colors.base-300');
+  --amplify-components-tabs-item-border-color: theme('colors.base-300');
+}
+
+* {
+  background-color: theme('colors.base-100');
+}
+
+.amplify-button {
+  color: theme('colors.base-content');
+}
