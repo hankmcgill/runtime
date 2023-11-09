@@ -20,7 +20,7 @@ export function App({ signOut, user }) {
     <main>
       <Header user={user} signOut={signOut} />
       <Profile user={user} />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   )
 }
