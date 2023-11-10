@@ -1,13 +1,19 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const PORT = 3000
+const PORT = 4000
+// Changed to 4000 for testing purposes
+// const PORT = 4000
 const { getProfile, createProfile } = require('./controllers/pg-controller')
 app.use(express.static('build'))
 app.use(express.json())
 app.use(bodyParser.json())
 
-app.get('/profile', getProfile, createProfile, (req, res) => {
+app.use('/test', (req, res) => {
+  return res.status(200).json('test')
+})
+
+app.post('/profile', getProfile, createProfile, (req, res) => {
   return res.status(200).json(res.locals.profile)
 })
 
