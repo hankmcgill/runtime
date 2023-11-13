@@ -4,21 +4,36 @@ export default function Profile(props) {
   // pass props to state from Cognito
   const [username, setUsername] = useState('')
   const [cognitoId, setCognitoId] = useState('')
+  const [userData, setUserData] = useState()
 
-  useEffect(() => {
+  const fetchData = async () => {
     setUsername(props.user.username)
     setCognitoId(props.user.pool.clientId)
+    // swap out URL for local testing
+    // const URL = `/profile?cognitoId=${cognitoId}&username=${username}`
+    const URL = `http://localhost:4000/profile?cognitoId=${cognitoId}&username=${username}`
 
-    fetch(`/profile?cognitoId=${cognitoId}&username=${username}`).then((res) =>
-      res.json().then((res) => {
-        console.log('response: ', res)
-      })
-    )
-  }, [])
+    try {
+      const response = await fetch(URL)
+      const result = await response.json()
+      setUserData(result)
+    } catch (err) {
+      console.error('error: ', err)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  })
 
   return (
     <main>
-      <h1>Hello {username}!</h1>
+      {userData && (
+        <ul>
+          <li>Hello {userData.username}!</li>
+          <li>Member since: {userData.created_at}!</li>
+        </ul>
+      )}
     </main>
   )
 }
