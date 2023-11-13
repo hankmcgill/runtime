@@ -10,8 +10,8 @@ export default function Profile(props) {
     setUsername(props.user.username)
     setCognitoId(props.user.pool.clientId)
     // swap out URL for local testing
-    // const URL = `/profile?cognitoId=${cognitoId}&username=${username}`
-    const URL = `http://localhost:4000/profile?cognitoId=${cognitoId}&username=${username}`
+    const URL = `/profile?cognitoId=${cognitoId}&username=${username}`
+    // const URL = `http://localhost:4000/profile?cognitoId=${cognitoId}&username=${username}`
 
     try {
       const response = await fetch(URL)

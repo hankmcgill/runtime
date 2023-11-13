@@ -1,10 +1,9 @@
 const express = require('express')
-const URL = require('url')
 const bodyParser = require('body-parser')
 const app = express()
 
-// const PORT = 3000
-const PORT = 4000
+const PORT = 3000
+// const PORT = 4000
 // Changed to 4000 for testing purposes
 
 const cors = require('cors')
