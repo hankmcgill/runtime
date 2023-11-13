@@ -7,7 +7,7 @@ client.connect()
 
 module.exports = {
   getProfile: async (req, res, next) => {
-    console.log('checking for existing profile...')
+    // console.log('checking for existing profile...')
 
     if (!req.query.cognitoId) {
       console.log('invalid path')
@@ -23,7 +23,7 @@ module.exports = {
       if (result.rowCount > 0) {
         res.locals.profile = result.rows[0]
       } else {
-        console.log('no results found - new user')
+        // console.log('no results found - new user')
       }
       return next()
     } catch (err) {
@@ -37,12 +37,12 @@ module.exports = {
 
     const text = `INSERT INTO Profile (cognito_pool_id, username) VALUES ($1, $2) RETURNING *;`
     const values = [req.query.cognitoId, req.query.username]
-    console.log('creating new entry in DB...')
+    // console.log('creating new entry in DB...')
 
     try {
       const result = await client.query(text, values)
       res.locals.profile = result.rows[0]
-      console.log('new user created & returned')
+      // console.log('new user created & returned')
       return next()
     } catch (err) {
       console.log('ERROR in creation of user: ', req.query.username)
