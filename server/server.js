@@ -2,15 +2,25 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const PORT = 4000
+// const PORT = 3000
 // Changed to 4000 for testing purposes
-// const PORT = 4000
+const cors = require('cors')
+app.use(
+  cors({
+    origin: '*'
+  })
+)
+
 const { getProfile, createProfile } = require('./controllers/pg-controller')
 app.use(express.static('build'))
 app.use(express.json())
 app.use(bodyParser.json())
 
 app.use('/test', (req, res) => {
-  return res.status(200).json('test')
+  return res.status(200).send({
+    cognito_pool_id: '7000',
+    username: 'hankold'
+  })
 })
 
 app.post('/profile', getProfile, createProfile, (req, res) => {
