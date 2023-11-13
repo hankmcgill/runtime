@@ -8,13 +8,13 @@ export default function Profile(props) {
   useEffect(() => {
     setUsername(props.user.username)
     setCognitoId(props.user.pool.clientId)
-  }, [])
 
-  useEffect(() => {
-    fetch(`/profile?cognitoId=${cognitoId}`).then((res) =>
-      res.json().then((res) => console.log('response: ', res))
+    fetch(`/profile?cognitoId=${cognitoId}&username=${username}`).then((res) =>
+      res.json().then((res) => {
+        console.log('response: ', res)
+      })
     )
-  })
+  }, [])
 
   return (
     <main>
