@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import Profile from './components/Profile'
 import Footer from './components/Footer'
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
 import { Amplify } from 'aws-amplify'
 import awsExports from './aws-exports'
@@ -15,14 +15,16 @@ Amplify.configure({
   }
 })
 
-export function App({ signOut, user }) {
+export default function App() {
   return (
-    <main>
-      <Header user={user} signOut={signOut} />
-      <Profile user={user} />
-      {/* <Footer /> */}
-    </main>
+    <Authenticator loginMechanisms={['username', 'email']}>
+      {({ signOut, user }) => (
+        <main>
+          <Header user={user} signOut={signOut} />
+          <Profile user={user} />
+          {/* <Footer /> */}
+        </main>
+      )}
+    </Authenticator>
   )
 }
-
-export default withAuthenticator(App, {})
