@@ -10,6 +10,7 @@ module.exports = {
     console.log('req', req.body.cognito_pool_id)
 
     const text = 'SELECT * FROM Profile WHERE cognito_pool_id = $1;'
+    // const values = [req.body.cognito_pool_id]
     const values = [req.body.cognito_pool_id]
     console.log('querying DB...')
 
