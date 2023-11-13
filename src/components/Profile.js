@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 export default function Profile(props) {
   // pass props to state from Cognito
-  const [username, setUsername] = useState('')
-  const [cognitoId, setCognitoId] = useState('')
+  const [username, setUsername] = useState(props.user.username)
+  const [cognitoId, setCognitoId] = useState(props.user.attributes.sub)
   const [userData, setUserData] = useState()
 
   const fetchData = async () => {
@@ -24,7 +24,7 @@ export default function Profile(props) {
 
   useEffect(() => {
     fetchData()
-  })
+  }, [])
 
   return (
     <main>

@@ -7,7 +7,12 @@ client.connect()
 
 module.exports = {
   getProfile: async (req, res, next) => {
-    if (!req.query.cognitoId) return
+    console.log('checking for existing profile...')
+
+    if (!req.query.cognitoId) {
+      console.log('invalid path')
+      return
+    }
 
     const text = 'SELECT * FROM Profile WHERE cognito_pool_id = $1;'
     const values = [req.query.cognitoId]
