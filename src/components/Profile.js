@@ -26,20 +26,37 @@ export default function Profile(props) {
     fetchRuns()
   }, [])
 
-  let runs = ''
-  if (userRuns.length > 0) {
-    runs = userRuns.map((run) => {
-      return (
-        <ul className="m-10" key={run.i}>
-          <li>Distance: {run.distance_in_miles} miles</li>
-          <li>Time: {run.time_in_seconds}s</li>
-          <li>Shoe: {run.shoe_model}</li>
-          <li>Difficulty: {run.difficulty}</li>
-          {run.treadmill && <li className="italic">Ran on treadmill</li>}
-          <li>Notes: {run.notes}</li>
-        </ul>
-      )
-    })
+  // let runs = ''
+  // if (userRuns.length > 0) {
+  //   runs = userRuns.map((run) => {
+  //     return (
+  //       <ul className="m-10" key={run.i}>
+  //         <li>Distance: {run.distance_in_miles} miles</li>
+  //         <li>Time: {run.time_in_seconds}s</li>
+  //         <li>Shoe: {run.shoe_model}</li>
+  //         <li>Difficulty: {run.difficulty}</li>
+  //         {run.treadmill && <li className="italic">Ran on treadmill</li>}
+  //         <li>Notes: {run.notes}</li>
+  //       </ul>
+  //     )
+  //   })
+  // }
+
+  let runs = null // Initialize as null
+
+  if (userRuns && userRuns.length > 0) {
+    runs = userRuns.map((run) => (
+      <ul className="m-10" key={run.i}>
+        <li>Distance: {run.distance_in_miles} miles</li>
+        <li>Time: {run.time_in_seconds}s</li>
+        <li>Shoe: {run.shoe_model}</li>
+        <li>Difficulty: {run.difficulty}</li>
+        {run.treadmill && <li className="italic">Ran on treadmill</li>}
+        <li>Notes: {run.notes}</li>
+      </ul>
+    ))
+  } else {
+    runs = <p>No runs found.</p>
   }
 
   const postRun = async () => {
