@@ -17,8 +17,6 @@ module.exports = {
     try {
       const result = await client.query(text, values)
       if (result.rowCount > 0) {
-        console.log('result arr: ', result.rows)
-
         res.locals.profile.runs = result.rows
       } else {
         console.log('no results found - new user')
