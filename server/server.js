@@ -9,6 +9,15 @@ const PORT = 4000
 const cors = require('cors')
 app.use(cors({ origin: '*' }))
 
+app.use(express.static('build'))
+app.use(express.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+)
+app.use(bodyParser.json())
+
 const {
   getProfile,
   createProfile
@@ -16,12 +25,13 @@ const {
 
 const { getRuns, postRun } = require('./controllers/run-controller')
 
-app.use(express.static('build'))
-app.use(express.json())
-app.use(bodyParser.json())
-
 app.use('/profile', getProfile, createProfile, getRuns, (req, res) => {
   return res.status(200).json(res.locals.profile)
+})
+
+app.post('/run', postRun, (req, res) => {
+  console.log('hitting middleware...')
+  return res.status(200).json(res.locals.postedRun)
 })
 
 // 404 bad req error handler

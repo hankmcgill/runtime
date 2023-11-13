@@ -22,7 +22,7 @@ export default function App() {
         <main>
           <Header user={user} signOut={signOut} />
           <Profile user={user} />
-          {/* <Footer /> */}
+          <Footer />
         </main>
       )}
     </Authenticator>

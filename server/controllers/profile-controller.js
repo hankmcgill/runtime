@@ -11,7 +11,7 @@ module.exports = {
 
     if (!req.query.cognitoId) {
       console.log('invalid path')
-      return
+      return next({ status: 500, update: 'err occurred getting profile' })
     }
 
     const text = 'SELECT * FROM Profile WHERE cognito_pool_id = $1;'
@@ -32,7 +32,9 @@ module.exports = {
   },
 
   createProfile: async (req, res, next) => {
-    if (!req.query.cognitoId) return
+    if (!req.query.cognitoId) {
+      return next({ status: 500, update: 'err occurred getting profile' })
+    }
     if (res.locals.profile) return next()
 
     const text = `INSERT INTO Profile (cognito_pool_id, username) VALUES ($1, $2) RETURNING *;`
