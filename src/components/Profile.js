@@ -145,94 +145,94 @@ export default function Profile(props) {
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
 
-                <h2 className="card-title italic justify-center">New run:</h2>
-
-                <div className="form-control w-full max-w-xs">
-                  <label className="label">
-                    <span className="label-text">Distance: </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Distance (miles)"
-                    className="input input-sm input-bordered w-full max-w-xs"
-                    defaultValue={distanceInput}
-                    onChange={(newText) => {
-                      setDistanceInput(newText.target.value)
-                    }}
-                  />
+                <div className="flex flex-col justify-center items-center">
+                  <h2 className="card-title italic">New run:</h2>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text">Distance: </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Distance (miles)"
+                      className="input input-sm input-bordered w-full max-w-xs"
+                      defaultValue={distanceInput}
+                      onChange={(newText) => {
+                        setDistanceInput(newText.target.value)
+                      }}
+                    />
+                  </div>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text">Time: </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Time (seconds)"
+                      className="input input-sm input-bordered w-full max-w-xs"
+                      defaultValue={timeInput}
+                      onChange={(newText) => {
+                        setTimeInput(newText.target.value)
+                      }}
+                    />
+                  </div>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text">Shoes: </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Shoe model"
+                      className="input input-sm input-bordered w-full max-w-xs"
+                      defaultValue={shoeInput}
+                      onChange={(newText) => {
+                        setShoeInput(newText.target.value)
+                      }}
+                    />
+                  </div>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text">Treadmill? </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="True/false"
+                      className="input input-sm input-bordered w-full max-w-xs"
+                      defaultValue={treadmillInput}
+                      onChange={(newText) => {
+                        setTreadmillInput(newText.target.value)
+                      }}
+                    />
+                  </div>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text">Difficulty: </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Easy/Medium/Hard"
+                      className="input input-sm input-bordered w-full max-w-xs"
+                      defaultValue={difficultyInput}
+                      onChange={(newText) => {
+                        setDifficultyInput(newText.target.value)
+                      }}
+                    />
+                  </div>
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text">Notes: </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Addl info here"
+                      className="input input-sm input-bordered w-full max-w-xs"
+                      defaultValue={notesInput}
+                      onChange={(newText) => {
+                        setNotesInput(newText.target.value)
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="form-control w-full max-w-xs">
-                  <label className="label">
-                    <span className="label-text">Time: </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Time (seconds)"
-                    className="input input-sm input-bordered w-full max-w-xs"
-                    defaultValue={timeInput}
-                    onChange={(newText) => {
-                      setTimeInput(newText.target.value)
-                    }}
-                  />
-                </div>
-                <div className="form-control w-full max-w-xs">
-                  <label className="label">
-                    <span className="label-text">Shoes: </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Shoe model"
-                    className="input input-sm input-bordered w-full max-w-xs"
-                    defaultValue={shoeInput}
-                    onChange={(newText) => {
-                      setShoeInput(newText.target.value)
-                    }}
-                  />
-                </div>
-                <div className="form-control w-full max-w-xs">
-                  <label className="label">
-                    <span className="label-text">Treadmill? </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="True/false"
-                    className="input input-sm input-bordered w-full max-w-xs"
-                    defaultValue={treadmillInput}
-                    onChange={(newText) => {
-                      setTreadmillInput(newText.target.value)
-                    }}
-                  />
-                </div>
-                <div className="form-control w-full max-w-xs">
-                  <label className="label">
-                    <span className="label-text">Difficulty: </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Easy/Medium/Hard"
-                    className="input input-sm input-bordered w-full max-w-xs"
-                    defaultValue={difficultyInput}
-                    onChange={(newText) => {
-                      setDifficultyInput(newText.target.value)
-                    }}
-                  />
-                </div>
-                <div className="form-control w-full max-w-xs">
-                  <label className="label">
-                    <span className="label-text">Notes: </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Addl info here"
-                    className="input input-sm input-bordered w-full max-w-xs"
-                    defaultValue={notesInput}
-                    onChange={(newText) => {
-                      setNotesInput(newText.target.value)
-                    }}
-                  />
-                </div>
-
-                <div className="flex justify-end mt-3">
+                <div className="flex justify-end mt-5">
                   <button className="btn btn-outline btn-error mr-1 italic">
                     Close
                   </button>
