@@ -16,8 +16,8 @@ export default function Profile(props) {
   const [notesInput, setNotesInput] = useState('')
 
   // swap out URL for local testing
-  const env = 'http://localhost:4000'
-  // const env = ''
+  // const env = 'http://localhost:4000'
+  const env = ''
 
   const fetchRuns = async () => {
     const URL = env + `/profile?cognitoId=${cognitoId}&username=${username}`
