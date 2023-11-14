@@ -71,7 +71,7 @@ module.exports = {
     console.log('deleting entry in DB...')
     try {
       const result = await client.query(text, values)
-      res.locals.postedRun = result.rows[0]
+      res.locals.deletedRun = result.rows[0]
       console.log('run deleted')
       return next()
     } catch (err) {
