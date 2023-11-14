@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Member from './Member'
 
 export default function Profile(props) {
   // pass props to state from Cognito
@@ -85,14 +86,12 @@ export default function Profile(props) {
   let runs = null // Initialize as null
   if (userRuns && userRuns.length > 0) {
     runs = userRuns.map((run) => (
-      <ul className="m-10" key={run.i}>
-        <div className="card w-96 bg-base-100 shadow-xl">
+      <ul className="my-5 text-center" key={run.i}>
+        <div className="card bg-base-100 shadow-xl">
           <div className="card-body">
-            <li>
-              <h2 className="card-title italic">
-                {run.distance_in_miles} mile run
-              </h2>
-            </li>
+            <h2 className="card-title italic justify-center">
+              {run.distance_in_miles} mile run
+            </h2>
             <li>
               <span className="font-bold">Time: </span> {run.time_in_seconds}s
             </li>
@@ -132,114 +131,119 @@ export default function Profile(props) {
 
   return (
     <main>
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
-      <button
-        className="btn"
-        onClick={() => document.getElementById('my_modal_5').showModal()}
-      >
-        New Run
-      </button>
-      <dialog id="my_modal_5" className="modal modal-middle">
-        <div className="modal-box">
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Distance: </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Distance (miles)"
-                  className="input input-bordered w-full max-w-xs"
-                  defaultValue={distanceInput}
-                  onChange={(newText) => {
-                    setDistanceInput(newText.target.value)
-                  }}
-                />
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Time: </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Time (seconds)"
-                  className="input input-bordered w-full max-w-xs"
-                  defaultValue={timeInput}
-                  onChange={(newText) => {
-                    setTimeInput(newText.target.value)
-                  }}
-                />
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Shoes: </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Shoe model"
-                  className="input input-bordered w-full max-w-xs"
-                  defaultValue={shoeInput}
-                  onChange={(newText) => {
-                    setShoeInput(newText.target.value)
-                  }}
-                />
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Treadmill? </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="True/false"
-                  className="input input-bordered w-full max-w-xs"
-                  defaultValue={treadmillInput}
-                  onChange={(newText) => {
-                    setTreadmillInput(newText.target.value)
-                  }}
-                />
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Difficulty: </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Easy/Medium/Hard"
-                  className="input input-bordered w-full max-w-xs"
-                  defaultValue={difficultyInput}
-                  onChange={(newText) => {
-                    setDifficultyInput(newText.target.value)
-                  }}
-                />
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text">Notes: </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Addl info here"
-                  className="input input-bordered w-full max-w-xs"
-                  defaultValue={notesInput}
-                  onChange={(newText) => {
-                    setNotesInput(newText.target.value)
-                  }}
-                />
-              </div>
+      <div className="flex justify-center">
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
+        <button
+          className="btn btn-accent"
+          onClick={() => document.getElementById('my_modal_5').showModal()}
+        >
+          New Run
+        </button>
+        <dialog id="my_modal_5" className="modal modal-middle">
+          <div className="modal-box">
+            <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Distance: </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Distance (miles)"
+                    className="input input-bordered w-full max-w-xs"
+                    defaultValue={distanceInput}
+                    onChange={(newText) => {
+                      setDistanceInput(newText.target.value)
+                    }}
+                  />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Time: </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Time (seconds)"
+                    className="input input-bordered w-full max-w-xs"
+                    defaultValue={timeInput}
+                    onChange={(newText) => {
+                      setTimeInput(newText.target.value)
+                    }}
+                  />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Shoes: </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Shoe model"
+                    className="input input-bordered w-full max-w-xs"
+                    defaultValue={shoeInput}
+                    onChange={(newText) => {
+                      setShoeInput(newText.target.value)
+                    }}
+                  />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Treadmill? </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="True/false"
+                    className="input input-bordered w-full max-w-xs"
+                    defaultValue={treadmillInput}
+                    onChange={(newText) => {
+                      setTreadmillInput(newText.target.value)
+                    }}
+                  />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Difficulty: </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Easy/Medium/Hard"
+                    className="input input-bordered w-full max-w-xs"
+                    defaultValue={difficultyInput}
+                    onChange={(newText) => {
+                      setDifficultyInput(newText.target.value)
+                    }}
+                  />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Notes: </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Addl info here"
+                    className="input input-bordered w-full max-w-xs"
+                    defaultValue={notesInput}
+                    onChange={(newText) => {
+                      setNotesInput(newText.target.value)
+                    }}
+                  />
+                </div>
 
-              <button className="btn btn-outline btn-secondary">Close</button>
-              <button onClick={postRun} className="btn btn-outline btn-primary">
-                Submit
-              </button>
-            </form>
+                <button className="btn btn-outline btn-secondary">Close</button>
+                <button
+                  onClick={postRun}
+                  className="btn btn-outline btn-primary"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-      </dialog>
+        </dialog>
+      </div>
 
       {runs}
-      {userData && <article>Member since: {userData.created_at}</article>}
+      {userData && <Member created_at={userData.created_at} />}
     </main>
   )
 }
