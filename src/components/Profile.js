@@ -134,16 +134,19 @@ export default function Profile(props) {
       <div className="flex justify-center">
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          className="btn btn-accent"
+          className="btn btn-accent font-extrabold my-5"
           onClick={() => document.getElementById('my_modal_5').showModal()}
         >
           New Run
         </button>
         <dialog id="my_modal_5" className="modal modal-middle">
           <div className="modal-box">
-            <div className="modal-action">
+            <div className="modal-action card-body">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
+
+                <h2 className="card-title italic justify-center">New run:</h2>
+
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
                     <span className="label-text">Distance: </span>
@@ -151,7 +154,7 @@ export default function Profile(props) {
                   <input
                     type="text"
                     placeholder="Distance (miles)"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-sm input-bordered w-full max-w-xs"
                     defaultValue={distanceInput}
                     onChange={(newText) => {
                       setDistanceInput(newText.target.value)
@@ -165,7 +168,7 @@ export default function Profile(props) {
                   <input
                     type="text"
                     placeholder="Time (seconds)"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-sm input-bordered w-full max-w-xs"
                     defaultValue={timeInput}
                     onChange={(newText) => {
                       setTimeInput(newText.target.value)
@@ -179,7 +182,7 @@ export default function Profile(props) {
                   <input
                     type="text"
                     placeholder="Shoe model"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-sm input-bordered w-full max-w-xs"
                     defaultValue={shoeInput}
                     onChange={(newText) => {
                       setShoeInput(newText.target.value)
@@ -193,7 +196,7 @@ export default function Profile(props) {
                   <input
                     type="text"
                     placeholder="True/false"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-sm input-bordered w-full max-w-xs"
                     defaultValue={treadmillInput}
                     onChange={(newText) => {
                       setTreadmillInput(newText.target.value)
@@ -207,7 +210,7 @@ export default function Profile(props) {
                   <input
                     type="text"
                     placeholder="Easy/Medium/Hard"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-sm input-bordered w-full max-w-xs"
                     defaultValue={difficultyInput}
                     onChange={(newText) => {
                       setDifficultyInput(newText.target.value)
@@ -221,7 +224,7 @@ export default function Profile(props) {
                   <input
                     type="text"
                     placeholder="Addl info here"
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-sm input-bordered w-full max-w-xs"
                     defaultValue={notesInput}
                     onChange={(newText) => {
                       setNotesInput(newText.target.value)
@@ -229,13 +232,17 @@ export default function Profile(props) {
                   />
                 </div>
 
-                <button className="btn btn-outline btn-secondary">Close</button>
-                <button
-                  onClick={postRun}
-                  className="btn btn-outline btn-primary"
-                >
-                  Submit
-                </button>
+                <div className="flex justify-end mt-3">
+                  <button className="btn btn-outline btn-error mr-1 italic">
+                    Close
+                  </button>
+                  <button
+                    onClick={postRun}
+                    className="btn btn-outline btn-success italic"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
             </div>
           </div>
