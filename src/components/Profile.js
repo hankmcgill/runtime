@@ -7,10 +7,19 @@ export default function Profile(props) {
   const [userData, setUserData] = useState()
   const [userRuns, setUserRuns] = useState([])
 
+  const [distanceInput, setDistanceInput] = useState('')
+  const [timeInput, setTimeInput] = useState('')
+  const [shoeInput, setShoeInput] = useState('')
+  const [treadmillInput, setTreadmillInput] = useState(false)
+  const [difficultyInput, setDifficultyInput] = useState('')
+  const [notesInput, setNotesInput] = useState('')
+
+  // swap out URL for local testing
+  // const env = 'http://localhost:4000'
+  const env = ''
+
   const fetchRuns = async () => {
-    // swap out URL for local testing
-    const URL = `/profile?cognitoId=${cognitoId}&username=${username}`
-    // const URL = `http://localhost:4000/profile?cognitoId=${cognitoId}&username=${username}`
+    const URL = env + `/profile?cognitoId=${cognitoId}&username=${username}`
 
     try {
       const response = await fetch(URL)
@@ -27,17 +36,15 @@ export default function Profile(props) {
   }, [])
 
   const postRun = async () => {
-    // swap out URL for local testing
-    const URL = `/run?cognitoId=${cognitoId}`
-    // const URL = `http://localhost:4000/run?cognitoId=${cognitoId}`
+    const URL = env + `/run?cognitoId=${cognitoId}`
 
     const payload = {
-      distance_in_miles: 4321,
-      time_in_seconds: 9876,
-      shoe_model: 'dunks',
-      treadmill: false,
-      difficulty: 'hard',
-      notes: 'this is a test post'
+      distance_in_miles: distanceInput,
+      time_in_seconds: timeInput,
+      shoe_model: shoeInput,
+      treadmill: treadmillInput,
+      difficulty: difficultyInput,
+      notes: notesInput
     }
     const options = {
       method: 'POST',
@@ -58,10 +65,7 @@ export default function Profile(props) {
   }
 
   const deleteRun = async (id) => {
-    console.log('id: ', id)
-    // // swap out URL for local testing
-    const URL = `/run?cognitoId=${cognitoId}&runId=${id}`
-    // const URL = `http://localhost:4000/run?cognitoId=${cognitoId}&runId=${id}`
+    const URL = env + `/run?cognitoId=${cognitoId}&runId=${id}`
 
     const options = {
       method: 'DELETE',
@@ -83,15 +87,18 @@ export default function Profile(props) {
   if (userRuns && userRuns.length > 0) {
     runs = userRuns.map((run) => (
       <ul className="m-10" key={run.i}>
-        <button className="btn-accent" onClick={() => deleteRun(run.id)}>
-          delete
-        </button>
         <li>Distance: {run.distance_in_miles} miles</li>
         <li>Time: {run.time_in_seconds}s</li>
         <li>Shoe: {run.shoe_model}</li>
         <li>Difficulty: {run.difficulty}</li>
         {run.treadmill && <li className="italic">Ran on treadmill</li>}
         <li>Notes: {run.notes}</li>
+        <button
+          className="btn-outline btn-secondary italic"
+          onClick={() => deleteRun(run.id)}
+        >
+          delete
+        </button>
       </ul>
     ))
   } else {
@@ -100,9 +107,112 @@ export default function Profile(props) {
 
   return (
     <main>
-      <button onClick={postRun} className="btn-primary">
+      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      <button
+        className="btn"
+        onClick={() => document.getElementById('my_modal_5').showModal()}
+      >
         New Run
       </button>
+      <dialog id="my_modal_5" className="modal modal-middle">
+        <div className="modal-box">
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Distance: </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Distance (miles)"
+                  className="input input-bordered w-full max-w-xs"
+                  defaultValue={distanceInput}
+                  onChange={(newText) => {
+                    setDistanceInput(newText.target.value)
+                  }}
+                />
+              </div>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Time: </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Time (seconds)"
+                  className="input input-bordered w-full max-w-xs"
+                  defaultValue={timeInput}
+                  onChange={(newText) => {
+                    setTimeInput(newText.target.value)
+                  }}
+                />
+              </div>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Shoes: </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Shoe model"
+                  className="input input-bordered w-full max-w-xs"
+                  defaultValue={shoeInput}
+                  onChange={(newText) => {
+                    setShoeInput(newText.target.value)
+                  }}
+                />
+              </div>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Treadmill? </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="True/false"
+                  className="input input-bordered w-full max-w-xs"
+                  defaultValue={treadmillInput}
+                  onChange={(newText) => {
+                    setTreadmillInput(newText.target.value)
+                  }}
+                />
+              </div>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Difficulty: </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Easy/Medium/Hard"
+                  className="input input-bordered w-full max-w-xs"
+                  defaultValue={difficultyInput}
+                  onChange={(newText) => {
+                    setDifficultyInput(newText.target.value)
+                  }}
+                />
+              </div>
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text">Notes: </span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Addl info here"
+                  className="input input-bordered w-full max-w-xs"
+                  defaultValue={notesInput}
+                  onChange={(newText) => {
+                    setNotesInput(newText.target.value)
+                  }}
+                />
+              </div>
+
+              <button className="btn btn-outline btn-secondary">Close</button>
+              <button onClick={postRun} className="btn btn-outline btn-primary">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
       {runs}
       {userData && <article>Member since: {userData.created_at}</article>}
     </main>
