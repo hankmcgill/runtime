@@ -4,9 +4,9 @@ export default function Profile(props) {
   // pass props to state from Cognito
   const [username, setUsername] = useState(props.user.username)
   const [cognitoId, setCognitoId] = useState(props.user.attributes.sub)
+
   const [userData, setUserData] = useState()
   const [userRuns, setUserRuns] = useState([])
-
   const [distanceInput, setDistanceInput] = useState('')
   const [timeInput, setTimeInput] = useState('')
   const [shoeInput, setShoeInput] = useState('')
@@ -15,12 +15,11 @@ export default function Profile(props) {
   const [notesInput, setNotesInput] = useState('')
 
   // swap out URL for local testing
-  // const env = 'http://localhost:4000'
-  const env = ''
+  const env = 'http://localhost:4000'
+  // const env = ''
 
   const fetchRuns = async () => {
     const URL = env + `/profile?cognitoId=${cognitoId}&username=${username}`
-
     try {
       const response = await fetch(URL)
       const result = await response.json()
@@ -87,18 +86,44 @@ export default function Profile(props) {
   if (userRuns && userRuns.length > 0) {
     runs = userRuns.map((run) => (
       <ul className="m-10" key={run.i}>
-        <li>Distance: {run.distance_in_miles} miles</li>
-        <li>Time: {run.time_in_seconds}s</li>
-        <li>Shoe: {run.shoe_model}</li>
-        <li>Difficulty: {run.difficulty}</li>
-        {run.treadmill && <li className="italic">Ran on treadmill</li>}
-        <li>Notes: {run.notes}</li>
-        <button
-          className="btn-outline btn-secondary italic"
-          onClick={() => deleteRun(run.id)}
-        >
-          delete
-        </button>
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <li>
+              <h2 className="card-title italic">
+                {run.distance_in_miles} mile run
+              </h2>
+            </li>
+            <li>
+              <span className="font-bold">Time: </span> {run.time_in_seconds}s
+            </li>
+            {run.shoes && (
+              <li>
+                <span className="font-bold">Shoes: </span> {run.shoe_model}
+              </li>
+            )}
+            {run.difficulty && (
+              <li>
+                <span className="font-bold">Difficulty: </span> {run.difficulty}
+              </li>
+            )}
+            {run.treadmill && <li className="italic">Ran on treadmill</li>}
+            {run.notes && (
+              <li>
+                <span className="font-bold">Notes: </span>
+                {run.notes}
+              </li>
+            )}
+
+            <div className="card-actions justify-end">
+              <button
+                className="btn btn-outline btn-secondary italic"
+                onClick={() => deleteRun(run.id)}
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
       </ul>
     ))
   } else {
