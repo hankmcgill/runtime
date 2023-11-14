@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Member from './Member'
+import { click } from '@testing-library/user-event/dist/click'
 
 export default function Profile(props) {
   // pass props to state from Cognito
@@ -16,11 +17,26 @@ export default function Profile(props) {
   const [notesInput, setNotesInput] = useState('')
 
   const [isChecked, setIsChecked] = useState(false)
-
   const checkHandler = () => {
     setIsChecked(!isChecked)
     setTreadmillInput(!treadmillInput)
   }
+
+  const [clickedValue, setClickedValue] = useState('0')
+  const difficultyHandler = (e) => {
+    setClickedValue(e.target.value)
+  }
+  useEffect(() => {
+    if (clickedValue === '0') {
+      setDifficultyInput('easy')
+    }
+    if (clickedValue === '1') {
+      setDifficultyInput('moderate')
+    }
+    if (clickedValue === '2') {
+      setDifficultyInput('hard')
+    }
+  }, [clickedValue])
 
   // swap out URL for local testing
   const env = 'http://localhost:4000'
@@ -159,7 +175,7 @@ export default function Profile(props) {
                       <span className="label-text">Distance: </span>
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       placeholder="Distance (miles)"
                       className="input input-sm input-bordered w-full max-w-xs"
                       defaultValue={distanceInput}
@@ -173,7 +189,7 @@ export default function Profile(props) {
                       <span className="label-text">Time: </span>
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       placeholder="Time (seconds)"
                       className="input input-sm input-bordered w-full max-w-xs"
                       defaultValue={timeInput}
@@ -199,9 +215,7 @@ export default function Profile(props) {
 
                   <div className="form-control w-full max-w-xs flex flex-row items-center justify-center">
                     <label className="label">
-                      <span className="label-text italic">
-                        Ran on treadmill{' '}
-                      </span>
+                      <span className="label-text italic">treadmill </span>
                     </label>
                     <input
                       type="checkbox"
@@ -209,6 +223,9 @@ export default function Profile(props) {
                       checked={isChecked}
                       onChange={checkHandler}
                     />
+                    <label className="label">
+                      <span className="label-text italic">outdoors </span>
+                    </label>
                   </div>
 
                   <div className="form-control w-full max-w-xs">
@@ -216,15 +233,21 @@ export default function Profile(props) {
                       <span className="label-text">Difficulty: </span>
                     </label>
                     <input
-                      type="text"
-                      placeholder="Easy/Medium/Hard"
-                      className="input input-sm input-bordered w-full max-w-xs"
-                      defaultValue={difficultyInput}
-                      onChange={(newText) => {
-                        setDifficultyInput(newText.target.value)
-                      }}
+                      type="range"
+                      min={0}
+                      max="2"
+                      value={clickedValue}
+                      className="range"
+                      step="1"
+                      onChange={difficultyHandler}
                     />
+                    <div className="w-full flex justify-between text-xs px-2">
+                      <span>easy</span>
+                      <span>moderate</span>
+                      <span>hard</span>
+                    </div>
                   </div>
+
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
                       <span className="label-text">Notes: </span>
