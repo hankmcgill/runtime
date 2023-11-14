@@ -9,8 +9,8 @@ export default function Profile(props) {
 
   const fetchRuns = async () => {
     // swap out URL for local testing
-    // const URL = `/profile?cognitoId=${cognitoId}&username=${username}`
-    const URL = `http://localhost:4000/profile?cognitoId=${cognitoId}&username=${username}`
+    const URL = `/profile?cognitoId=${cognitoId}&username=${username}`
+    // const URL = `http://localhost:4000/profile?cognitoId=${cognitoId}&username=${username}`
 
     try {
       const response = await fetch(URL)
@@ -28,8 +28,8 @@ export default function Profile(props) {
 
   const postRun = async () => {
     // swap out URL for local testing
-    // const URL = `/run?cognitoId=${cognitoId}`
-    const URL = `http://localhost:4000/run?cognitoId=${cognitoId}`
+    const URL = `/run?cognitoId=${cognitoId}`
+    // const URL = `http://localhost:4000/run?cognitoId=${cognitoId}`
 
     const payload = {
       distance_in_miles: 4321,
@@ -60,8 +60,8 @@ export default function Profile(props) {
   const deleteRun = async (id) => {
     console.log('id: ', id)
     // // swap out URL for local testing
-    // const URL = `/run?cognitoId=${cognitoId}&id=${id}`
-    const URL = `http://localhost:4000/run?cognitoId=${cognitoId}&runId=${id}`
+    const URL = `/run?cognitoId=${cognitoId}&runId=${id}`
+    // const URL = `http://localhost:4000/run?cognitoId=${cognitoId}&runId=${id}`
 
     const options = {
       method: 'DELETE',
