@@ -15,9 +15,16 @@ export default function Profile(props) {
   const [difficultyInput, setDifficultyInput] = useState('')
   const [notesInput, setNotesInput] = useState('')
 
+  const [isChecked, setIsChecked] = useState(false)
+
+  const checkHandler = () => {
+    setIsChecked(!isChecked)
+    setTreadmillInput(!treadmillInput)
+  }
+
   // swap out URL for local testing
-  // const env = 'http://localhost:4000'
-  const env = ''
+  const env = 'http://localhost:4000'
+  // const env = ''
 
   const fetchRuns = async () => {
     const URL = env + `/profile?cognitoId=${cognitoId}&username=${username}`
@@ -189,20 +196,21 @@ export default function Profile(props) {
                       }}
                     />
                   </div>
-                  <div className="form-control w-full max-w-xs">
+
+                  <div className="form-control w-full max-w-xs flex flex-row items-center justify-center">
                     <label className="label">
-                      <span className="label-text">Treadmill? </span>
+                      <span className="label-text italic">
+                        Ran on treadmill{' '}
+                      </span>
                     </label>
                     <input
-                      type="text"
-                      placeholder="True/false"
-                      className="input input-sm input-bordered w-full max-w-xs"
-                      defaultValue={treadmillInput}
-                      onChange={(newText) => {
-                        setTreadmillInput(newText.target.value)
-                      }}
+                      type="checkbox"
+                      className="toggle toggle-success"
+                      checked={isChecked}
+                      onChange={checkHandler}
                     />
                   </div>
+
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
                       <span className="label-text">Difficulty: </span>
