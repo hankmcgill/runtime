@@ -16,7 +16,7 @@ export default function Profile(props) {
   const [difficultyInput, setDifficultyInput] = useState('')
   const [notesInput, setNotesInput] = useState('')
 
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(true)
   const checkHandler = () => {
     setIsChecked(!isChecked)
     setTreadmillInput(!treadmillInput)
@@ -149,7 +149,13 @@ export default function Profile(props) {
       </ul>
     ))
   } else {
-    runs = <p>No runs found.</p>
+    runs = (
+      <p className="ml-5">
+        No runs found. Click{' '}
+        <span className="text-accent font-extrabold">NEW RUN</span> to get
+        started.
+      </p>
+    )
   }
 
   return (
@@ -157,7 +163,7 @@ export default function Profile(props) {
       <div className="flex justify-center">
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          className="btn btn-accent font-extrabold my-5"
+          className="btn btn-accent btn-wide font-extrabold my-5"
           onClick={() => document.getElementById('my_modal_5').showModal()}
         >
           New Run
@@ -169,10 +175,10 @@ export default function Profile(props) {
                 {/* if there is a button in form, it will close the modal */}
 
                 <div className="flex flex-col justify-center items-center">
-                  <h2 className="card-title italic">New run:</h2>
+                  <h2 className="card-title">New run:</h2>
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
-                      <span className="label-text">Distance: </span>
+                      <span className="label-text italic">Distance: </span>
                     </label>
                     <input
                       type="number"
@@ -186,7 +192,7 @@ export default function Profile(props) {
                   </div>
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
-                      <span className="label-text">Time: </span>
+                      <span className="label-text italic">Time: </span>
                     </label>
                     <input
                       type="number"
@@ -200,7 +206,7 @@ export default function Profile(props) {
                   </div>
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
-                      <span className="label-text">Shoes: </span>
+                      <span className="label-text italic">Shoes: </span>
                     </label>
                     <input
                       type="text"
@@ -213,9 +219,11 @@ export default function Profile(props) {
                     />
                   </div>
 
-                  <div className="form-control w-full max-w-xs flex flex-row items-center justify-center">
+                  <div className="form-control w-full max-w-xs flex flex-row items-center justify-center mt-3">
                     <label className="label">
-                      <span className="label-text italic">treadmill </span>
+                      <span className="label-text italic text-gray-400">
+                        treadmill{' '}
+                      </span>
                     </label>
                     <input
                       type="checkbox"
@@ -230,7 +238,7 @@ export default function Profile(props) {
 
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
-                      <span className="label-text">Difficulty: </span>
+                      <span className="label-text italic">Difficulty: </span>
                     </label>
                     <input
                       type="range"
@@ -249,20 +257,23 @@ export default function Profile(props) {
                   </div>
 
                   <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                      <span className="label-text">Notes: </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Addl info here"
-                      className="input input-sm input-bordered w-full max-w-xs"
-                      defaultValue={notesInput}
-                      onChange={(newText) => {
-                        setNotesInput(newText.target.value)
-                      }}
-                    />
+                    <details className="dropdown">
+                      <summary className="mt-1.5 italic text-s">
+                        Add notes:{' '}
+                      </summary>
+                      <input
+                        type="text"
+                        placeholder="..."
+                        className="input input-xs input-bordered w-full max-w-xs bg-yellow-100 text-primary font-mono"
+                        defaultValue={notesInput}
+                        onChange={(newText) => {
+                          setNotesInput(newText.target.value)
+                        }}
+                      />
+                    </details>
                   </div>
                 </div>
+
                 <div className="flex justify-end mt-5">
                   <button className="btn btn-outline btn-error mr-1 italic">
                     Close

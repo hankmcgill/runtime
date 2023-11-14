@@ -8,7 +8,7 @@ export default function Member(props) {
 
   return (
     <div className="flex justify-center">
-      <button className="btn">
+      <button className="btn btn-ghost">
         Account created:
         <div className="badge badge-secondary">{formattedDateString}</div>
       </button>
