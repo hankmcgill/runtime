@@ -23,15 +23,18 @@ const {
   createProfile
 } = require('./controllers/profile-controller')
 
-const { getRuns, postRun } = require('./controllers/run-controller')
+const { getRuns, postRun, deleteRun } = require('./controllers/run-controller')
 
 app.use('/profile', getProfile, createProfile, getRuns, (req, res) => {
   return res.status(200).json(res.locals.profile)
 })
 
 app.post('/run', postRun, (req, res) => {
-  console.log('hitting middleware...')
   return res.status(200).json(res.locals.postedRun)
+})
+
+app.delete('/run', deleteRun, (req, res) => {
+  return res.status(200).json(res.locals.deletedRun)
 })
 
 // 404 bad req error handler

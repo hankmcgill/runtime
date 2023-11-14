@@ -26,39 +26,6 @@ export default function Profile(props) {
     fetchRuns()
   }, [])
 
-  // let runs = ''
-  // if (userRuns.length > 0) {
-  //   runs = userRuns.map((run) => {
-  //     return (
-  //       <ul className="m-10" key={run.i}>
-  //         <li>Distance: {run.distance_in_miles} miles</li>
-  //         <li>Time: {run.time_in_seconds}s</li>
-  //         <li>Shoe: {run.shoe_model}</li>
-  //         <li>Difficulty: {run.difficulty}</li>
-  //         {run.treadmill && <li className="italic">Ran on treadmill</li>}
-  //         <li>Notes: {run.notes}</li>
-  //       </ul>
-  //     )
-  //   })
-  // }
-
-  let runs = null // Initialize as null
-
-  if (userRuns && userRuns.length > 0) {
-    runs = userRuns.map((run) => (
-      <ul className="m-10" key={run.i}>
-        <li>Distance: {run.distance_in_miles} miles</li>
-        <li>Time: {run.time_in_seconds}s</li>
-        <li>Shoe: {run.shoe_model}</li>
-        <li>Difficulty: {run.difficulty}</li>
-        {run.treadmill && <li className="italic">Ran on treadmill</li>}
-        <li>Notes: {run.notes}</li>
-      </ul>
-    ))
-  } else {
-    runs = <p>No runs found.</p>
-  }
-
   const postRun = async () => {
     // swap out URL for local testing
     // const URL = `/run?cognitoId=${cognitoId}`
@@ -88,6 +55,47 @@ export default function Profile(props) {
       console.error('error: ', err)
     }
     fetchRuns()
+  }
+
+  const deleteRun = async (id) => {
+    console.log('id: ', id)
+    // // swap out URL for local testing
+    // const URL = `/run?cognitoId=${cognitoId}&id=${id}`
+    const URL = `http://localhost:4000/run?cognitoId=${cognitoId}&runId=${id}`
+
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    try {
+      const response = await fetch(URL, options)
+      const result = await response.json()
+      console.log('result ', result)
+    } catch (err) {
+      console.error('error: ', err)
+    }
+    fetchRuns()
+  }
+
+  let runs = null // Initialize as null
+  if (userRuns && userRuns.length > 0) {
+    runs = userRuns.map((run) => (
+      <ul className="m-10" key={run.i}>
+        <button className="btn-accent" onClick={() => deleteRun(run.id)}>
+          delete
+        </button>
+        <li>Distance: {run.distance_in_miles} miles</li>
+        <li>Time: {run.time_in_seconds}s</li>
+        <li>Shoe: {run.shoe_model}</li>
+        <li>Difficulty: {run.difficulty}</li>
+        {run.treadmill && <li className="italic">Ran on treadmill</li>}
+        <li>Notes: {run.notes}</li>
+      </ul>
+    ))
+  } else {
+    runs = <p>No runs found.</p>
   }
 
   return (

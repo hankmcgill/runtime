@@ -56,5 +56,27 @@ module.exports = {
       console.log('ERROR in creation of run')
       return next({ status: 500, update: 'err occurred posting run' })
     }
+  },
+
+  deleteRun: async (req, res, next) => {
+    console.log('id: ', req.query.runId)
+
+    if (!req.query.cognitoId) {
+      console.log('failing to hitting path')
+      return next({ status: 500, update: 'err occurred getting profile' })
+    }
+
+    const text = `DELETE FROM Run WHERE id=($1) RETURNING *;`
+    const values = [req.query.runId]
+    console.log('deleting entry in DB...')
+    try {
+      const result = await client.query(text, values)
+      res.locals.postedRun = result.rows[0]
+      console.log('run deleted')
+      return next()
+    } catch (err) {
+      console.log('ERROR in deletion of run')
+      return next({ status: 500, update: 'err occurred deleting run' })
+    }
   }
 }
