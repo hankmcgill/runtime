@@ -38,7 +38,7 @@ module.exports = {
 
     const text = `INSERT INTO Run (cognito_pool_id, distance_in_miles, time_in_seconds, shoe_model, treadmill, difficulty, notes) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`
     const values = [
-      '662aa3cc-ce45-40c5-a390-15daccca89e5',
+      req.query.cognitoId,
       req.body.distance_in_miles,
       req.body.time_in_seconds,
       req.body.shoe_model,
